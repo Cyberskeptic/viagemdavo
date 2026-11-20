@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Countdown to 17 December</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #f6f1ea;
+    --ink-soft: rgba(246, 241, 234, 0.72);
+    --glass: rgba(14, 33, 48, 0.55);
+    --glass-edge: rgba(246, 241, 234, 0.18);
+    --dusk-top: #12304a;
+    --dusk-mid: #5b6f8c;
+    --dusk-low: #e9a77e;
+    --green: #7fd1a4;
+    --yellow: #f2d46b;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Work Sans", system-ui, sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    /* Put your photo next to this file and name it auckland.jpg.
+       If it is missing, the dusk gradient and skyline below show instead. */
+    background:
+      linear-gradient(180deg, rgba(10, 24, 36, 0.35), rgba(10, 24, 36, 0.65)),
+      url("auckland.jpg") center / cover no-repeat fixed,
+      linear-gradient(180deg, var(--dusk-top) 0%, var(--dusk-mid) 55%, var(--dusk-low) 100%) fixed;
+  }
+  .skyline {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 38vh; pointer-events: none;
+  }
+  body.has-photo .skyline { display: none; }
+
+  main {
+    position: relative;
+    width: min(880px, 100%);
+    padding: clamp(24px, 5vw, 56px);
+    background: var(--glass);
+    border: 1px solid var(--glass-edge);
+    border-radius: 28px;
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+  }
+  .count {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(8px, 2vw, 24px);
+    margin: clamp(20px, 4vw, 36px) 0 clamp(24px, 4vw, 40px);
+  }
+  .unit { text-align: left; }
+  .num {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 10vw, 6rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .label { margin-top: 6px; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .clocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 3vw, 32px);
+    padding-top: clamp(18px, 3vw, 28px);
+    border-top: 1px solid var(--glass-edge);
+  }
+  .clock .place { font-size: 1rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .nz .dot { background: var(--yellow); }
+  .br .dot { background: var(--green); }
+  .clock .time {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.9rem, 6vw, 3.2rem);
+    font-variant-numeric: tabular-nums;
+    margin-top: 6px;
+  }
+  .clock .date { font-size: 0.95rem; color: var(--ink-soft); margin-top: 4px; }
+  .gap { margin-top: 22px; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .done .count { display: none; }
+  .done-msg { display: none; font-family: "Fraunces", serif; font-size: clamp(2rem, 8vw, 4rem); margin: 28px 0 36px; }
+  .done .done-msg { display: block; }
+
+  @media (max-width: 520px) {
+    .count { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+    .clocks { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="skyline" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <g fill="#0a1824">
+    <rect x="0" y="250" width="1200" height="50"/>
+    <rect x="40" y="215" width="50" height="40"/>
+    <rect x="100" y="190" width="42" height="65"/>
+    <rect x="150" y="225" width="60" height="30"/>
+    <rect x="250" y="170" width="46" height="85"/>
+    <rect x="304" y="200" width="38" height="55"/>
+    <rect x="350" y="150" width="54" height="105"/>
+    <rect x="412" y="195" width="40" height="60"/>
+    <!-- Sky Tower -->
+    <rect x="596" y="70" width="8" height="180"/>
+    <path d="M570 128 h60 l-8 18 h-44 z"/>
+    <rect x="588" y="118" width="24" height="10"/>
+    <rect x="598" y="20" width="4" height="52"/>
+    <rect x="530" y="185" width="44" height="70"/>
+    <rect x="636" y="170" width="48" height="85"/>
+    <rect x="692" y="205" width="36" height="50"/>
+    <rect x="740" y="160" width="52" height="95"/>
+    <rect x="800" y="195" width="44" height="60"/>
+    <rect x="856" y="175" width="40" height="80"/>
+    <rect x="910" y="215" width="58" height="40"/>
+    <rect x="990" y="195" width="46" height="60"/>
+    <rect x="1050" y="225" width="70" height="30"/>
+  </g>
+  <g fill="#f2d46b" opacity="0.65">
+    <rect x="360" y="170" width="4" height="4"/><rect x="376" y="188" width="4" height="4"/>
+    <rect x="750" y="180" width="4" height="4"/><rect x="764" y="200" width="4" height="4"/>
+    <rect x="644" y="195" width="4" height="4"/><rect x="262" y="190" width="4" height="4"/>
+    <rect x="866" y="200" width="4" height="4"/><rect x="108" y="210" width="4" height="4"/>
+  </g>
+</svg>
+
+<main id="card">
+  <h1>Until 17 December</h1>
+
+  <div class="count" aria-live="off">
+    <div class="unit"><div class="num" id="d">0</div><div class="label">days</div></div>
+    <div class="unit"><div class="num" id="h">00</div><div class="label">hours</div></div>
+    <div class="unit"><div class="num" id="m">00</div><div class="label">minutes</div></div>
+    <div class="unit"><div class="num" id="s">00</div><div class="label">seconds</div></div>
+  </div>
+  <div class="done-msg">It's 17 December.</div>
+
+  <div class="clocks">
+    <div class="clock nz">
+      <div class="place"><span class="dot"></span>Auckland</div>
+      <div class="time" id="nzTime">--:--:--</div>
+      <div class="date" id="nzDate"></div>
+    </div>
+    <div class="clock br">
+      <div class="place"><span class="dot"></span>Brazil (Brasília)</div>
+      <div class="time" id="brTime">--:--:--</div>
+      <div class="date" id="brDate"></div>
+    </div>
+  </div>
+  <p class="gap" id="gap"></p>
+</main>
+
+<script>
+  // Edit this line to change the target. Midnight at the start of 17 Dec, Auckland time (NZDT, UTC+13).
+  const TARGET = new Date("2026-12-17T00:00:00+13:00");
+
+  const NZ = "Pacific/Auckland";
+  const BR = "America/Sao_Paulo";
+
+  const timeFmt = tz => new Intl.DateTimeFormat("en-GB", { timeZone: tz, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+  const dateFmt = tz => new Intl.DateTimeFormat("en-NZ", { timeZone: tz, weekday: "long", day: "numeric", month: "long" });
+  const nzT = timeFmt(NZ), brT = timeFmt(BR), nzD = dateFmt(NZ), brD = dateFmt(BR);
+
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, "0");
+
+  // Offset difference between the two zones, so it stays correct if daylight saving changes.
+  function hoursAhead(now) {
+    const parts = tz => {
+      const p = new Intl.DateTimeFormat("en-US", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric" }).formatToParts(now);
+      const g = t => +p.find(x => x.type === t).value;
+      return Date.UTC(g("year"), g("month") - 1, g("day"), g("hour"), g("minute"));
+    };
+    return Math.round((parts(NZ) - parts(BR)) / 36e5);
+  }
+
+  function tick() {
+    const now = new Date();
+    $("nzTime").textContent = nzT.format(now);
+    $("brTime").textContent = brT.format(now);
+    $("nzDate").textContent = nzD.format(now);
+    $("brDate").textContent = brD.format(now);
+    $("gap").textContent = "Auckland is " + hoursAhead(now) + " hours ahead of Brazil right now.";
+
+    let diff = TARGET - now;
+    if (diff <= 0) { $("card").classList.add("done"); return; }
+    $("card").classList.remove("done");
+    const s = Math.floor(diff / 1000);
+    $("d").textContent = Math.floor(s / 86400);
+    $("h").textContent = pad(Math.floor(s % 86400 / 3600));
+    $("m").textContent = pad(Math.floor(s % 3600 / 60));
+    $("s").textContent = pad(s % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Hide the drawn skyline if a real photo is present.
+  const img = new Image();
+  img.onload = () => document.body.classList.add("has-photo");
+  img.src = "auckland.jpg";
+</script>
+</body>
+</html>
